@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <title>Clothes</title>
@@ -8,122 +7,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-
 body{
-    margin:0;
-    background:#f5f5f5;
-    font-family:Arial;
+margin:0;
+background:#f5f5f5;
 }
 
-
-.container{
-
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:15px;
-    padding:15px;
-
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+padding:10px;
 }
 
-
-.product img{
-
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:12px;
-    box-shadow:0 3px 10px #ccc;
-
+.grid img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:10px;
 }
-
-
-.product img:hover{
-
-    transform:scale(1.03);
-
-}
-
 
 a{
-    text-decoration:none;
+text-decoration:none;
 }
-
-
-
-/* For bigger screens */
-
-@media(min-width:700px){
-
-.container{
-
-grid-template-columns:repeat(4,1fr);
-
-}
-
-}
-
 </style>
 
 </head>
 
-
 <body>
 
+<div class="grid" id="products"></div>
 
-<div class="container">
+
+<script>
+
+fetch("https://docs.google.com/spreadsheets/d/1vFDlAIrNyzzZ7OaUWnF_h4JklrNc6CjDhG--vCMnst0/gviz/tq")
+.then(response => response.text())
+.then(data => {
+
+let json = JSON.parse(data.substring(47).slice(0,-2));
+
+let rows = json.table.rows;
+
+let output="";
+
+rows.forEach(row => {
+
+let category = row.c[0].v;
+let image = row.c[1].v;
+let link = row.c[2].v;
 
 
-<a href="YOUR_AMAZON_LINK">
+if(category=="clothes"){
 
-<div class="product">
-
-<img src="shirt1.jpg">
-
-</div>
-
+output += `
+<a href="${link}">
+<img src="${image}">
 </a>
+`;
 
+}
 
+});
 
-<a href="YOUR_MEESHO_LINK">
+document.getElementById("products").innerHTML=output;
 
-<div class="product">
+});
 
-<img src="dress1.jpg">
-
-</div>
-
-</a>
-
-
-
-<a href="YOUR_FLIPKART_LINK">
-
-<div class="product">
-
-<img src="jeans1.jpg">
-
-</div>
-
-</a>
-
-
-
-<a href="YOUR_AMAZON_LINK">
-
-<div class="product">
-
-<img src="tshirt1.jpg">
-
-</div>
-
-</a>
-
-
-
-</div>
-
+</script>
 
 </body>
-
 </html>
