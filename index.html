@@ -1,5 +1,77 @@
-<div class="container">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Budget Finds</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  font-family: Arial;
+  background:#f5f5f5;
+  margin:0;
+  text-align:center;
+}
 
+/* Gradient header */
+.header{
+  background: linear-gradient(90deg, #ff6b6b, #ffa94d);
+  color:white;
+  padding:25px 10px;
+}
+.header h1{
+  margin:0;
+  font-size:24px;
+}
+.header p{
+  margin:5px 0 0;
+  font-size:14px;
+  opacity:0.9;
+}
+
+/* Vertical list in middle */
+.container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px;
+  padding:25px 20px;
+}
+
+.card{
+  background:white;
+  width:85%;
+  max-width:350px;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition: transform 0.2s;
+}
+.card:hover{
+  transform: scale(1.02);
+}
+
+a{
+  text-decoration:none;
+  color:#333;
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>🛍️ Budget Finds</h1>
+  <p>Best products at affordable prices</p>
+</div>
+
+<div class="container">
   <a href="clothes.html">
     <div class="card">👕 Clothes</div>
   </a>
@@ -13,7 +85,7 @@
   </a>
 
   <a href="interesting.html">
-    <div class="card">✨ Interesting Products</div>
+    <div class="card">✨ Interesting</div>
   </a>
 
   <a href="gifts.html">
@@ -35,5 +107,7 @@
   <a href="sports.html">
     <div class="card">⚽ Sports</div>
   </a>
-
 </div>
+
+</body>
+</html>
